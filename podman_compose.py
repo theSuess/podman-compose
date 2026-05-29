@@ -2766,7 +2766,7 @@ class PodmanCompose:
                 x_podman = service_desc.get("x-podman")
                 rootfs_mode = x_podman is not None and x_podman.get("rootfs") is not None
                 if "image" not in cnt and not rootfs_mode:
-                    cnt["image"] = self.format_name(service_name)
+                    cnt["image"] = 'localhost/' + self.format_name(service_name)
                 labels = norm_as_list(cnt.get("labels"))
                 cnt["ports"] = norm_ports(cnt.get("ports"))
                 labels.extend(podman_compose_labels)
